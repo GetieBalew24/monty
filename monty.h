@@ -59,4 +59,6 @@ void m_push(stack_t **stack, unsigned int line_number);
 void m_pall(stack_t **stack, unsigned int line_number);
 stack_t *add_node(stack_t **stack, const int n);
 void op_pint(stack_t **stack, unsigned int line_number);
+void op_pop(stack_t **stack, unsigned int line_number);
+
 #endif
