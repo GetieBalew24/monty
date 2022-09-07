@@ -1,28 +1,24 @@
 #include "monty.h"
 
 /**
- *  pall - print all
- *  @stack: ponter to the list stack
- *  @line_number: unused variable
- *  Return: the address of the first node
+ * m_pall - print all values on `stack' starting from the top
+ * @stack: double pointer to head of stack
+ * @line_number: line number being executed from script file
+ * Return: void
  */
-
-stack_t *pall(stack_t **stack, unsigned int line_number)
+void m_pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
-	size_t node_c = 0;
-
-	tmp = *stack;
-
-	if (*stack == NULL)
+	stack_t *head;
+	(void)(line_number);
+	head = *stack;
+	while (head != NULL)
 	{
-		return (NULL);
+
+		printf("%d\n", head->n);
+		head = head->next;
+		if (head == *stack)
+		{
+			return;
+		}
 	}
-	while (tmp != NULL)
-	{
-		printf("%d\n", tmp->n);
-		tmp = tmp->next;
-		node_c++;
-	}
-	return (*stack);
 }
