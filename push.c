@@ -1,31 +1,48 @@
 #include "monty.h"
+#include <ctype.h>
+#include <stdio.h>
 
 /**
- * push - adds a node with the value token on the stack
- * @stack: ponter to the list stack
- * @line_number: unused variable
- * Return: address of the new node
+ * check_for_digit - checks that a string only contains digits
+ * @arg: string to check
+ * Return: 0 if only digits, else 1
  */
-stack_t *push(stack_t **stack, unsigned int line_number)
+static int check_for_digit(char *arg)
 {
-	stack_t *new_node;
-	/* Create new node */
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
+	int i;
+
+	for (i = 0; arg[i]; i++)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free_stack(stack);
+		if (arg[i] == '-' && i == 0)
+			continue;
+		if (isdigit(arg[i]) == 0)
+			return (1);
+	}
+	return (0);
+}
+
+/**
+ * m_push - push an integer onto the stack
+ * @stack: double pointer to the beginning of the stack
+ * @line_number: script line number
+ * Return: void
+ */
+void m_push(stack_t **stack, unsigned int line_number)
+{
+	char *arg;
+	int n;
+
+	arg = strtok(NULL, "\n\t\r ");
+	if (arg == NULL || check_for_digit(arg))
+	{
+		printf("%d \n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	/* Initialize the new node with the value of token */
-	new_node->n = token;
-	/* New node is placed at the beginning of the list */
-	new_node->prev = NULL;
-	new_node->next = *stack;
-	/* If new node is not alone, update the following one */
-	if (*stack != NULL)
-		(*stack)->prev = new_node;
-	/* head points to the new node */
-	*stack = new_node;
-	return (new_node);
+	n = atoi(arg);
+	if (!add_node(stack, n))
+	{
+		printf("Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	var.stack_len++;
 }
