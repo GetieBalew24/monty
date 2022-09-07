@@ -1,14 +1,30 @@
-#ifndef MONTY_H_
-#define MONTY_H_
+#ifndef _MONTY_H_
+#define _MONTY_H_
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
-#include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <ctype.h>
+#include <unistd.h>
+
+/**
+ * struct var_s - struct to contain the main variables of the Monty interpreter
+ * @queue: flag to determine if in stack vs queue mode
+ * @stack_len: length of the stack
+ */
+typedef struct var_s
+{
+	int queue;
+	size_t stack_len;
+} var_t;
+
+#define STACK 0
+#define QUEUE 1
+
+/* global struct to hold flag for queue and stack length */
+extern var_t var;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -39,10 +55,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/* Declaration of the global variables */
-extern int token;
-
-/* Prototypes */
-stack_t *push(stack_t **stack, unsigned int line_number);
-stack_t *pall(stack_t **stack, unsigned int line_number);
+void m_push(stack_t **stack, unsigned int line_number);
+void m_pall(stack_t **stack, unsigned int line_number);
+stack_t *add_node(stack_t **stack, const int n);
 #endif
