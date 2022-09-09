@@ -13,6 +13,7 @@
 		{"swap", swap},   \
 		{"add", _add},    \
 		{"nop", nop},     \
+		{"sub", _sub},    \
 		{                     \
 			NULL, NULL      \
 		}                     \
@@ -75,6 +76,7 @@ void pop(stack_t **stack, unsigned int line_cnt);
 void swap(stack_t **stack, unsigned int line_cnt);
 void _add(stack_t **stack, unsigned int line_cnt);
 void nop(stack_t **stack, unsigned int line_cnt);
+void _sub(stack_t **stack, unsigned int line_cnt);
 
 void opcode(stack_t **stack, char *str, unsigned int line_cnt);
 
