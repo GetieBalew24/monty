@@ -16,6 +16,7 @@
 		{"sub", _sub},    \
 		{"div", _div},    \
 		{"mul", _mul},    \
+		{"mod", mod},     \
 		{                     \
 			NULL, NULL      \
 		}                     \
@@ -81,7 +82,7 @@ void nop(stack_t **stack, unsigned int line_cnt);
 void _sub(stack_t **stack, unsigned int line_cnt);
 void _div(stack_t **stack, unsigned int line_cnt);
 void _mul(stack_t **stack, unsigned int line_cnt);
-
+void mod(stack_t **stack, unsigned int line_cnt);
 void opcode(stack_t **stack, char *str, unsigned int line_cnt);
 
 int is_digit(char *string);
