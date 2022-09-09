@@ -11,6 +11,7 @@
 		{"pint", pint},   \
 		{"pop", pop},     \
 		{"swap", swap},   \
+		{"add", _add},    \
 		{                     \
 			NULL, NULL      \
 		}                     \
@@ -71,6 +72,7 @@ void pall(stack_t **stack, unsigned int line_cnt);
 void pint(stack_t **stack, unsigned int line_cnt);
 void pop(stack_t **stack, unsigned int line_cnt);
 void swap(stack_t **stack, unsigned int line_cnt);
+void _add(stack_t **stack, unsigned int line_cnt);
 
 void opcode(stack_t **stack, char *str, unsigned int line_cnt);
 
